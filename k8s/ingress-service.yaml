@@ -3,8 +3,8 @@ kind: Ingress
 metadata:
   name: ingress-service
   annotations:
-    kubernetes.io/inress.class: nginx
-    nginx.ingress.kubernetes.io/use-regex: 'true'
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -24,7 +24,7 @@ spec:
               servicePort: 3000
           - path: /api/?(.*)
             backend:
-              serviceName: service-cluster-ip-service
+              serviceName: server-cluster-ip-service
               servicePort: 5000
     - host: www.antonio.casa
       http:
@@ -35,6 +35,5 @@ spec:
               servicePort: 3000
           - path: /api/?(.*)
             backend:
-              serviceName: service-cluster-ip-service
+              serviceName: server-cluster-ip-service
               servicePort: 5000
-
